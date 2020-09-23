@@ -55,7 +55,7 @@ int main(void)
 
 	scanf("%d", &B);
 	for (i=1;i<=300;i++) {
-		convert_base(B, i*i, num);
+		convert_base(B, i*i, num); //길이의 반만 비교하면서 같은지 보면됨
 		reverse(num, rnum);
 		if (str_cmp(num, rnum) == 0) {
 			convert_base(B,i, num);
