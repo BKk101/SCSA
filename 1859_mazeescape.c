@@ -23,7 +23,7 @@ int main(void)
 		scanf("%d", &dir[i]);
 	map[0][0] = -1;
 	for (x=y=dis=move=0;;) {
-		if (map[0][1] == 1 && map[1][0] == 1) break;
+		if (map[0][1] == 1 && map[1][0] == 1) break; //move 바뀔때마다 cnt변수 증가시켜서 cnt>=4일때 break 하는 방식으로 가능
 		if (dir[move] == 1) {
 			j=0; i=1;
 		}
