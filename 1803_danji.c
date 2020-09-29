@@ -35,7 +35,7 @@ void convert(int x, int y)
 	for (i=0;i<4;i++) {
 		nx = x + dx[i];
 		ny = y + dy[i];
-		if (nx < 0 || nx >= N || ny < 0 || ny >= N) continue;
+		if (nx < 0 || nx >= N || ny < 0 || ny >= N) continue; //입력을 1,1 부터 받으면 경계에 0 채워져서 경계 검사안해도됨
 		if (map[ny][nx] == 1) convert(nx,ny);
 	}
 }
