@@ -46,7 +46,7 @@ void Re(int * lst)
 void DFS(int n)
 {
 	int i;
-	int chklst[16];
+	int chklst[16];// 이거 없애고 범위내 군함에서 hp 계속 빼고 더하면서 가능한듯
 	int left;
 
 	if (n == M) {

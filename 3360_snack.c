@@ -34,7 +34,7 @@ void DFS(int n, int sum)
 	}
 	for (i=0;i<N;i++) {
 		if (chk[i] == 1) continue;
-		dis = ABS(robot[n].x,snack[i].x) + ABS(robot[n].y,snack[i].y);
+		dis = ABS(robot[n].x,snack[i].x) + ABS(robot[n].y,snack[i].y); //제일처음에 거리계산해서 표만들고 하면 편함
 		if (sum+dis >= min) continue;
 		chk[i] = 1;
 		DFS(n+1, sum+dis);
