@@ -38,7 +38,7 @@ void BFS(void)
 				sum[ny][nx] = sum[q.y][q.x]+map[ny][nx];
 				in_que(nx,ny);
 			}
-			else {
+			else { //sum 배열을 처음에 무한값으로 채우고 합이 작은 경우만 조건 걸어도됨
 				if (sum[q.y][q.x]+map[ny][nx] < sum[ny][nx]) {
 					sum[ny][nx] = sum[q.y][q.x]+map[ny][nx];
 					in_que(nx,ny);
