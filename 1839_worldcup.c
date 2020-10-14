@@ -2,24 +2,45 @@
 #include <stdio.h>
 
 int score[4][6][3];
+int cmp[4][6][3];
 int chk[20];
 int flag;
+int ans[4];
 
-int Check()
+int Check(int c)
 {
+	int i,j,t,k;
 
+	for (i=0;i<6;i++) {
+		for (j=0;j<3;j++) cmp[c][i][j] = 0;
+	}
+	for (k=i=0;i<6;i++) {
+		for (j=5-i;j>0;j--) {
+			t = chk[k++];
+			cmp[c][i][t]++;
+			cmp[c][6-j][2-t]++;
+		}
+		if (cmp[c][i][0] != score[c][i][0] || cmp[c][i][1] != score[c][i][0] 
+|| cmp[c][i][2] != score[c][i][2]) return 0;
+	}
+	return 1;
 }
 
-void DFS(int c, int n)
+void DFS(int n)
 {
 	int i;
 
+	if (flag == 4) return;
 	if (n == 16) {
-		if (Check()){}
+		for (i=0;i<4;i++) {
+			if (ans[i] == 1) continue;
+			if (ans[i] = Check(i))flag++;
+		}
 		return;
 	}
 	for (i = 0; i < 2; i++) {
 		chk[n] = i;
+		DFS(n+1);
 	}
 }
 
@@ -32,33 +53,7 @@ int main(void)
 			scanf("%d", &score[i][j / 3][j % 3]);
 		}
 	}
-	for (i = 0; i < 4; i++) {
-		for (j = 0; j < 6; j++) {
-			flag = 0;
-			DFS(i, j, j+1);
-			if (flag == 0) {
-				printf("0 ");
-				break;
-			}
-		}
-		if (j == 6) printf("1 ");
-	}
+	DFS(0);
+	for (i=0;i<4;i++) printf("%d ", ans[i]);
 	return 0;
 }
-
-#if 0
-
-if (n == 6) {
-	if (chk[c][p][0] == score[c][p][0] && chk[c][p][1] == score[c][p][1] && chk[c][p][2] == score[c][p][2]) flag = 1;
-	return;
-}
-if (chk[c][p][0] > score[c][p][0] || chk[c][p][1] > score[c][p][1] || chk[c][p][2] > score[c][p][2]) return;
-for (i = 0; i < 3; i++) {
-	if (i == 0) { chk[c][p][0]++; chk[c][n][2]++; }
-	else if (i == 1) { chk[c][p][1]++; chk[c][n][1]++; }
-	else if (i == 2) { chk[c][p][2]++; chk[c][n][0]++; }
-	DFS(c, p, n + 1);
-}
-}
-
-#endif
